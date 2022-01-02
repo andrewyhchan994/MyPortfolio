@@ -1,0 +1,9 @@
+ljust method reference:
+
+
+s = "fox"
+
+s.ljust(4)
+
+>>> OUTPUT
+'fox '

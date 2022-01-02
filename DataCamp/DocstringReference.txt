@@ -1,0 +1,10 @@
+def fun_docs():
+    """I know how to interact with the docstrings of a function."""
+    
+    return None
+
+fun_docs.__doc__
+
+
+>>> 
+gives the docstring 'I know how to interact with the docstrings of a function.'
