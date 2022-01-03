@@ -1,0 +1,17 @@
+Example of 
+for (let i in ....){}
+
+
+const myArr = [1, 2, 3];
+
+for (let i in myArr){
+ console.log(i);
+}
+
+OUTPUT:
+0, 1, 2
+
+
+let i in myArr -------> i equal to the indices 0, 1, 2
+
+to get item, use myArr[i]...

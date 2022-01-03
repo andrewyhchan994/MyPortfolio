@@ -1,0 +1,19 @@
+Instructions:
+Truncate a String
+Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
+----------------------------------
+function truncateString(str, num) {
+  let tempStr = "";
+  for (let i = 0; i <= num - 1; i ++){
+    tempStr+= str[i];
+  }
+  if (str.length > num){
+    return tempStr + '...';
+  } else if (str.length <= num){
+    return str;
+  } else {
+    return tempStr;
+  }
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
