@@ -1,0 +1,29 @@
+// Here I learn about .includes() method
+
+// usage:     array.includes(someElement) -> return true or false
+// substitute for python (x in arr1)
+
+
+function mutation(arr) {
+  let temp = arr[0].toLowerCase();
+  let arr2 = [...temp] // string.split(''); Array.from(string); Object.assign([]        , string);
+
+  let temp2 = arr[1].toLowerCase();
+
+  for (let i = 0; i <= temp2.length - 1 ; i ++){
+    console.log(temp2[i]);
+    if (arr2.includes(temp2[i])){
+      //let index = arr2.findIndex(ch => ch == temp2[i]);
+      //arr2.splice(index, 1);
+      //console.log(arr2);
+    } else{
+      return false;
+    }
+  }
+  return true;
+  
+
+
+}
+
+mutation(["hello", "hey"]);
