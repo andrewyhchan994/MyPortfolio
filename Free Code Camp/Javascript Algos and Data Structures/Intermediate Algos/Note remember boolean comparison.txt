@@ -1,0 +1,36 @@
+// Problem wasn't too tricky
+// Just ran into a quick and small bug at the end where comparison operator == wasn't used (used = instead)
+
+INSTRUCTIONS:
+Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+----------------------------------------------------------
+function chunkArrayInGroups(arr, size) {
+  let newArr = [[]];
+  let flag = true;
+  
+  let count = 0;
+  let i = 0;
+
+  while(flag){
+    newArr[count].push(arr[i]);
+    
+
+    if (i == arr.length - 1){
+      break;
+    } else{
+      i ++;
+    }
+
+    if (newArr[count].length == size){
+      newArr.push([]);
+      count ++;
+    }
+
+
+  }
+
+  console.log(newArr);
+  return newArr;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);

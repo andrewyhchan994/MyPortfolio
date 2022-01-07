@@ -1,0 +1,26 @@
+function pairElement(str) {
+  let pairObj = { // have an object with properties which are pairs
+    'A':'T',
+    'T':'A',
+    'C':'G',
+    'G':'C'
+  }
+
+
+  let newArr = [];// initialize empty array
+
+  for (let i = 0; i < str.length; i ++){
+    newArr.push([str[i], pairObj[str[i]]]);
+
+  }
+  console.log(newArr);
+  
+  return newArr;
+
+
+
+
+}
+
+
+pairElement("GCG");

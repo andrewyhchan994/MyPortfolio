@@ -1,0 +1,52 @@
+function translatePigLatin(str) {
+  let vowelReg = /[aeiou]/;
+  let cluster = "";
+  let index = 0;
+
+  if (str[0].match(vowelReg)){
+    return str + "way";
+  } else {
+    for (let i = 0; i < str.length; i ++){
+      if (vowelReg.test(str[i]) == false){
+        index = i + 1;
+        
+      } else{ // Note without this else statement, the first consonant index is returned instead of the entire cluster
+        break;
+      }   
+
+    }
+  cluster = str.slice(0, index);
+  console.log(str.slice(index,) + cluster + "ay");
+  return str.slice(index,) + cluster + "ay";
+
+
+
+  }
+}
+  
+  
+  
+  // let myRegCons = /([^aeiou]+)(\w)+/;
+  // let count = 0;
+  // let cluster = "";
+  // while (true){
+  //   if (str[count].match(myRegCons)){ // match or test is faster/less computational 
+  //     cluster += str[count];
+  //     count ++;
+  //   } else{
+  //     break;
+  //   }
+
+  // }
+
+  // let newStr = str.match);
+
+  // console.log(newStr);
+
+
+
+
+  // return str;
+
+
+translatePigLatin("consonant");

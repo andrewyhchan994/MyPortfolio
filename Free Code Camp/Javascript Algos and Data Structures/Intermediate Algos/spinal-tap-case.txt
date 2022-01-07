@@ -1,0 +1,29 @@
+INSTRUCTIONS:
+Spinal Tap Case
+Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+-------------------------------------------------------------------------------
+
+function spinalCase(str) {
+
+  let newStr = str[0].toLowerCase();
+  for (let i = 1; i < str.length; i ++){
+    if (str [i] === " " || str[i] === "_"){
+      newStr += "-";
+    } else if (str[i] === str[i].toUpperCase()){
+      newStr += "-" + str[i].toLowerCase();
+    } else{
+      newStr += str[i].toLowerCase();
+    }
+  }
+
+  console.log(newStr);
+
+  let myregex = /\w+/g; // bit of a hack fix -> the words are correct, iterations is wrong, hence we can simply extract all the words and put them into the correct format
+  let myArr = newStr.match(myregex);
+
+  newStr = myArr.join("-");
+  return newStr;
+
+}
+
+spinalCase('This Is Spinal Tap');

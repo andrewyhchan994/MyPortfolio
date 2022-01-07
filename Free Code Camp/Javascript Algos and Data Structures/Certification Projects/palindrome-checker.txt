@@ -1,0 +1,23 @@
+function palindrome(str) {
+  str = str.toLowerCase();
+  let myReg = /[a-z0-9]+/ig;
+
+  let myArr = str.match(myReg);
+  console.log(myArr);
+  myArr = myArr.join("");
+  
+  console.log(myArr);
+  for (let i = 0; i < myArr.length; i ++){
+    if (myArr[i] != myArr[myArr.length - i - 1]){
+
+      return false;
+    }
+
+  }
+  return true;
+  
+
+
+}
+
+palindrome("eye");

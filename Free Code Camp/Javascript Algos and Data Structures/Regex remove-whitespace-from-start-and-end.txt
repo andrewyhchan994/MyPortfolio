@@ -1,0 +1,8 @@
+let hello = "   Hello, World!  ";
+let wsRegex = /[a-zA-z]\D*\s\w*\D(?=\s+)/i; // Change this line
+let result = hello.match(wsRegex)[0]; // Change this line
+
+
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/g; // Change this line
+let result = hello.replace(wsRegex, ""); // Change this line

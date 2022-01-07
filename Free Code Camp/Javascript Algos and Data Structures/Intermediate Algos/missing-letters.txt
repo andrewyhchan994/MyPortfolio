@@ -1,0 +1,20 @@
+function fearNotLetter(str) {
+  const testStr = 'abcdefghijklmnopqrstuvwxyz';
+  let myArr = testStr.split("");
+  let index = myArr.findIndex(item => item == str[0]);
+
+  if (str == testStr){
+    return undefined;
+  }
+
+  for (let i = 0; i < str.length; i ++){ // Here I check through str, and compare to the letter in testStr, with the index position found above with findIndex()
+    if(str[i] != testStr[index + i]){
+      return testStr[index + i];
+    }
+
+  }
+
+  
+}
+
+fearNotLetter("abce");

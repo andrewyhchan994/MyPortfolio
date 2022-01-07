@@ -1,0 +1,8 @@
+(function () {
+  console.log("A cozy nest is ready");
+})(); 
+
+// Note the above function has no name and is not stored in a variable
+// immediately invoked function expression IIFE 
+
+// two parentheses () at the end of the function expression cause it to be immediately executed or invoked

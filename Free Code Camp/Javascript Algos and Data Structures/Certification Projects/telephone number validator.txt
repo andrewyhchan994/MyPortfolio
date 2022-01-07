@@ -1,0 +1,27 @@
+function telephoneCheck(str) {
+  // digit counter
+  let digitRegex = /\d+/g;
+  let digitCount = str.match(digitRegex)
+                      .join("")
+                      .length;
+
+  // Check if 1 at beginning of 11 digit phone number
+  if (digitCount === 11){
+    if (str.match(digitRegex).join("")[0] != 1){
+      return false;
+    }
+  } else if (digitCount > 11 || digitCount < 10){
+    return false;
+  }
+
+  // check bad symbols
+  let symbolRegex = /[^-()\s\d]/; //negate brackets, spaces, and digits
+  if (symbolRegex.test(str) === true){
+    return false;
+  }
+
+  // check format (hard part)
+
+
+
+
