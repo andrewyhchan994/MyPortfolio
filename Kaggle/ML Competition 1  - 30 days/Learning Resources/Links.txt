@@ -1,0 +1,9 @@
+Technical guide for anaconda environment
+https://www.techentice.com/how-to-make-jupyter-notebook-to-run-on-gpu/
+
+Parameters guides for xgb:
+read://https_www.datacamp.com/?url=https%3A%2F%2Fwww.datacamp.com%2Fcommunity%2Ftutorials%2Fxgboost-in-python
+https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/
+
+Ensembling techniques:
+https://www.deepwizai.com/projects/how-to-invent-your-own-new-ml-algorithm-a-novel-ensembling-technique

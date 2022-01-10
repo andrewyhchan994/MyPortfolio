@@ -1,0 +1,65 @@
+Add your changes here:
+Codenames: A, S, M
+------------------
+17 August 2021: Day 2 
+M: 2 submissions
+A: 1 submission
+Note: A used XGBRegressor with K-fold Cross validation
+------------------
+18 August 2021: Day 3
+A:1 submission
+Note: A improved parameters of XGBRegressor
+------------------
+19 August 2021: Day 4 
+A:1 submission
+Note: did not improve, dropped 11 outliers
+------------------
+20 August 2021: Day 5
+A:1 submission
+Note: did not improve, dropped 5 outliers
+------------------
+21 August 2021: Day 6
+A:1 submission
+Note: did not improve, used xgb train without tuning (side-note, felt more computational-intensive than xgbregressor)
+------------------
+22 August 2021: Day 7
+A: 3 submissions
+Note: did not improve, and although checked submissions were different data, scores stayed the same
+------------------
+23 August 2021:Day 8
+M: 2 submissions
+A: 1 submission
+Note: A used LGBMRegressor, didn't improve score, no feature engineering yet
+-------------------
+24 August 2021: Day 9 
+0 submissions
+Note: working on hyperparameter grid search, feature engineering, and trying out/learning NN
+--------------------
+25 August 2021: Day 10
+A: 9 submissions
+Note: worked on xgb regressor and tuning hyperparams; inflated numbers, needed to find source of error, also worked on LGBM early, w/ feature selection
+----------------------
+26 August 2021: Day 11
+M:1 submission
+A: 1 submission
+Note: ensemble 0.7 xgb, 0.3 lightgbm, did not improve score
+---------------------
+27 August 2021: Day 12
+A: 2 submissions
+Note: best solution so far: remove standardization, use ordinal encoding, use optimal xgbreg params
+	- possible overfitting, public rmse much higher than rmse derived from validation data
+---------------------
+28 August 2021: Day 13
+M: 5 submissions
+---------------------
+29 August 2021: Day 14
+M: 1 submission
+Note: included numerical scaling (minmax)
+---------------------
+30 August 2021: Day 15
+A: 6 submissions, Improved score
+Note: added Numerical transformations into pipeline. Encountered error with the input having feature names, possibly being converted to np.array in pipeline. Preprocessed data using columntransformer outside of sklearn's pipeline. 
+-----------------------
+31 August 2021: Day 16 Final day
+A: 2 submissions
+Note: Tried Bayes search CV

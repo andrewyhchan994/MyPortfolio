@@ -1,0 +1,61 @@
+Changelog for A's pipeline
+-------------------------------
+Tuesday 24 August 2021
+-Fix bugs, such as forgetting 'self', and other minor problems preventing program to run
+-Hypertuned lightGBMRegressor with onehotencoding + data-standardization
+- Data leakage still not fixed -> ie. want to implement this and 'normalization' next
+	-> ie. put encoding within cross-validation loops, instead of preprocessing entire data before training model
+-------------------------------
+Wednesday 25 August 2021
+- More bugfixes, implemented feature selection
+	- added sklearn Pipelines and fixed bugs, tuning hyperparams with sklearn pipelines
+	- Sidenote: pipeline params -> ('xgbReg', xgbReg)
+- Added code to allow preprocessing into cv for hyperparameter tuning section, using sklearn Pipelines
+- tuning hyperparams with a preencoded set did not improve results, results much worse
+	- see if estimator size is the culprit 
+		- when running randomsearchcv, trying with low estimator and high learning rate for faster speeds
+			- the optimum params are not giving the expected improvements in rmse
+- use pd.DataFrame, ('feature_importance': model.feature_importance(importance_type='gain')
+or model.get_score(importance_type='gain') to get feature importance
+- hyperparam tuning not as successful as hoped, try searching through n-estimators and learning rate by including them in param list
+- Fixing more bugs, reasoning: altering inside kaggle, but not saving inside local versions
+--------------------------------------
+Thursday 26 August 2021 (UTC TIME)
+- Only ~20 hours of GPU left
+- Major error was found, test_data was not encoded, so predictions were using raw test_data, instead of say, normalizing data
+	- hence two different inputs, trained data, and raw test data
+- Trying label encoder, continuing running more tests
+- Implementing sklearn pipelines into training model as well
+- Tested label encoder wtih full features, same hyper params, trying ordinal encoding
+- Fix feature selection code
+	- Side note: using dataframe.drop() does not modify dataframe in place
+- Fix ordinal encoder code -> Side note: need to use to_numpy to get proper size array (2d as opposed to 1d), 
+	as well use -> reshape (-1, 1) on the numpy arrays
+- likely exhausted through xgbregress params, dropped unimportant values from search
+- Try BayesSearch cv next, currently running tests on randomForest using CPU
+- added scoring to be RMSE and changed verbose params 
+
+- added feature importance into output in the section of xgb
+	- experimented, selecting features from this output, was further reduced on next iteration, eg, if 10 columns were selected, xgbregressor chose 3/10 of these in next iteration
+- fixed bugs in feature selection, and training model section
+-------------------------------------------------
+Monday, 30 August 2021 (UTC TIME) - > Competition ends 31 August, 23:59 UTC
+- added Numerical transformations into pipeline. Encountered error with the input having feature names, possibly being converted to np.array in pipeline. Preprocessed data using columntransformer outside of sklearn's pipeline. 
+-----------------------------------------------
+Tuesday, 31 August 2021: Competition finished
+- implemented BayesSearchCV
+- hypertuned xgb, got scores close to PB (personal best), params were also similar, except for L1/L2 regularization, 
+	- improvements can be made, ie. removing standardscaler() which forcefully normalizes data
+		- and fixing the cross-validation (I think right now, default set to stratified kfolds)
+- next is to create code that quickly activates GPU version of LightGBM
+	- lightGBM without GPU is extremely slow, even on Kaggle's cloud computing
+- Next:
+	- can try tensorflow/keras deep learning
+	- random forest regressor /gradient regressor /linear regressor
+	- ensemble methods
+
+- competition is over, but learning and implementing these ideas into 
+the pipeline are important in creating a pipeline for tabular/data competitions
+
+- Also need a more disciplined procedure of EDA (exploratory data analysis) for feature analysis/selection/engineering
+	- for this, study statistics, computer science, and read other people's research/competition notebooks
