@@ -1,0 +1,19 @@
+// sorting
+// sort is in place -> just calling the line arr.sort();
+// then arr is mutated
+
+// used indexOf to find the index of the alphabetical string
+
+INSTRUCTIONS: sort alphabetically
+-------------------
+
+function alphabeticalOrder(arr) {
+  // Only change code below this line
+  let strin = "abcdefghijklmnopqrstuvwxyz";
+  arr.sort((a, b) => strin.indexOf(a) - strin.indexOf(b));
+  console.log(arr);
+  return arr;
+  // Only change code above this line
+}
+
+alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);

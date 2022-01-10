@@ -1,0 +1,127 @@
+NOTE:
+This took me a while. There was an issue with rounding -> once the code reached penny, change was something like 0.0099998
+-> using change =  change.toFixed(2) to get only two digits also made a bug
+-> change became a string, I finally solved the problem by checking the type of change using typeof(change)
+-> with that I completed this challenge project
+
+INSTRUCTIONS:
+
+Cash Register
+Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price), payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
+
+cid is a 2D array listing available currency.
+
+The checkCashRegister() function should always return an object with a status key and a change key.
+
+Return {status: "INSUFFICIENT_FUNDS", change: []} if cash-in-drawer is less than the change due, or if you cannot return the exact change.
+
+Return {status: "CLOSED", change: [...]} with cash-in-drawer as the value for the key change if it is equal to the change due.
+
+Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
+
+Currency Unit	Amount
+Penny	$0.01 (PENNY)
+Nickel	$0.05 (NICKEL)
+Dime	$0.1 (DIME)
+Quarter	$0.25 (QUARTER)
+Dollar	$1 (ONE)
+Five Dollars	$5 (FIVE)
+Ten Dollars	$10 (TEN)
+Twenty Dollars	$20 (TWENTY)
+One-hundred Dollars	$100 (ONE HUNDRED)
+See below for an example of a cash-in-drawer array:
+
+[
+  ["PENNY", 1.01],
+  ["NICKEL", 2.05],
+  ["DIME", 3.1],
+  ["QUARTER", 4.25],
+  ["ONE", 90],
+  ["FIVE", 55],
+  ["TEN", 20],
+  ["TWENTY", 60],
+  ["ONE HUNDRED", 100]
+]
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+function checkCashRegister(price, cash, cid) {
+  let total = 0;
+  for (let i = 0; i < cid.length; i++){
+    total += cid[i][1];
+  }
+  total = total.toFixed(2); // total cash in register
+
+  let regisObj = {//set up regisObj here for easier access
+    status: "",
+    change: []
+  }
+  //change  
+  let change = cash - price; //customer's cash - price
+  let changeArr = []; // change array in coins and bills sorted in highest to lowest order
+
+  if (change > total){
+    regisObj.status = "INSUFFICIENT_FUNDS";
+    return regisObj;
+  } else if (change == total){ // deals with change = total and cashregister is closed
+    regisObj.status = "CLOSED";
+    regisObj.change = cid;
+    return regisObj;
+  } else if (change < total){
+    
+    // two cases
+    // Case 1: cannot return exact change
+    // Case 2: can return exact change
+    
+    let cashMultiplierArr = [.01, .05, .10, .25, 1, 5, 10, 20, 100]
+    let cashLabelArr = ["PENNY", "NICKEL", "DIME", "QUARTER", "ONE", "FIVE", "TEN", "TWENTY", " ONE HUNDRED"];
+    let multiplierW = 1;
+    
+    for (let i = cid.length - 1; i >= 0; i--){ // i starts at end, cid is sorted ascending order
+      if (change >= cashMultiplierArr[i] && cid[i][1] != 0){ // check if the (cash - price) is greater than the penny, nickel, etc
+        let subtotalChange = 0;
+        while(cashMultiplierArr[i]*multiplierW <= cid[i][1] 
+        && cashMultiplierArr[i]*multiplierW <= change){
+          
+          subtotalChange += cashMultiplierArr[i]; 
+          multiplierW ++;
+        }
+        
+        if (subtotalChange != 0){
+          changeArr.push([cashLabelArr[i], subtotalChange]);
+          change -= subtotalChange;
+          change = change.toFixed(2);
+          subtotalChange = 0;
+        }
+        console.log(changeArr);
+        multiplierW = 1;
+      }
+    } // end of the for loop
+    console.log("end for loop");
+    console.log(typeof(change));
+    if (change !== "0.00"){
+      regisObj.status = "INSUFFICIENT_FUNDS";
+      regisObj.change = [];
+      return regisObj;
+    } else if (change === "0.00"){
+      regisObj.status = "OPEN";
+      regisObj.change = changeArr;
+      console.log(regisObj);
+      return regisObj;
+    }
+
+  }
+    
+
+  }
+
+
+
+
+
+
+
+
+
+
+checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);

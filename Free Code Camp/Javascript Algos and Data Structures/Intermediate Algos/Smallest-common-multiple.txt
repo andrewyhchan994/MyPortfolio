@@ -1,0 +1,112 @@
+function smallestCommons(arr) {
+  let start = 0;
+  let end = 0;
+  if (arr[0] < arr[1]){
+    start = arr[0];
+    end = arr[1];
+  } else{
+    start = arr[1];
+    end = arr[0];
+  }
+  let primeDiv = [];
+  let multiples = [];
+
+  for (let j = start; j <= end; j ++){
+    if (j === 1){
+      continue;
+    }
+    for (let i = 2; i <= j; i ++){
+      if (!multiples.includes(i)){
+        multiples.push(i);
+        if (!primeDiv.includes(i)){
+          primeDiv.push(i);
+        }
+      }
+      for (let k = i**2; k <= j; k += i){
+        if (!multiples.includes(k)){
+          multiples.push(k);
+        }
+      }
+
+
+    }
+  
+  }
+  let total = 1;
+  console.log(primeDiv);
+  let multiplierArr = [...primeDiv];
+
+  let nonPrimeDiv = [];
+
+  for (let m = start; m <= end; m++){
+    if (m == 1){
+      continue;
+    } else if (!primeDiv.includes(m)){
+      nonPrimeDiv.push(m);
+    }
+  }
+
+  // now nonPrimeDiv is the non-primes between start and end
+  // last case -> some primes are not divisible
+
+  
+
+
+
+  let exponent = 2;
+  for (let count in primeDiv){
+    while(primeDiv[count]**exponent <= end){
+      if (primeDiv[count]**exponent <= end && primeDiv[count]**exponent >= start){
+        multiplierArr.push(primeDiv[count]);
+      }
+      exponent ++;
+
+    }
+    exponent = 2;
+  }
+
+
+
+  let multi = 1;
+  for (let n in multiplierArr){
+    multi *= multiplierArr[n];
+  }
+
+  console.log(multiplierArr);
+  console.log(multi);
+
+  return multi;
+
+
+
+    console.log(total);
+
+
+    return total;
+
+
+}
+
+ // now nonPrimeDiv is the non-primes between start and end
+  // last case -> some primes are not divisible
+  const betweenArr = [];
+  for (let i = start; i <= end; i++){
+    if (i == 1){
+      continue;
+    }
+    betweenArr.push(i);
+  }
+
+  const newprimeDiv = [];
+  for (let j = 0; j < primeDiv.length; j++){
+    if (betweenArr.some((item) => (item %primeDiv[j]) == 0)){
+      newprimeDiv.push(primeDiv[j]);
+
+    }    
+  }
+  console.log(newprimeDiv);
+
+
+
+
+smallestCommons([1,5]);

@@ -1,0 +1,35 @@
+Steamroller
+Flatten a nested array. You must account for varying levels of nesting.
+
+
+
+
+------------------------
+function steamrollArray(arr) {
+  // base case eg -> arr = [['a']]
+  
+  const flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+}
+
+
+//   if (Array.isArray(arr) == false){
+//     console.log(arr);
+//     return arr;
+//   } else{
+
+//   }
+
+
+
+//   for (let i= 0; i < arr.length; i ++){
+    
+//       arr[i] = (steamrollArray(arr[i]));
+      
+    
+//   }
+//   console.log(arr);
+//   return arr;
+// }
+
+steamrollArray([1, [2], [3, [[4]]]]);

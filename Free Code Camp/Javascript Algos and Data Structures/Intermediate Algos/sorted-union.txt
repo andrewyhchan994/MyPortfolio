@@ -1,0 +1,36 @@
+INSTRUCTIONS:
+Sorted Union
+Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+
+In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+
+The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+-----------------------------------------------------
+
+function uniteUnique(arr) {
+  // using the arguments object
+  let myArr = [];
+  for (let i = 0; i < arguments.length; i ++){
+    // looping throught arguments
+    // arguments[n] gives the nth argument
+    // arguments is an object that is like {'1': something, '2': somethingelse etc}
+
+    // (no need to sort) arguments[i].sort((a, b) => a - b); // sorting callback function
+    // in place
+    myArr.push(...arguments[i]);
+  }
+  myArr = [].concat(...myArr); // bit of a hack, removing all the nested arrays 
+  console.log(myArr);
+  let finalArr = [];
+  for (let i in myArr){
+    if (!finalArr.includes(myArr[i])){
+      finalArr.push(myArr[i]);
+    }
+  }
+  console.log(finalArr);
+  return finalArr;
+
+
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);

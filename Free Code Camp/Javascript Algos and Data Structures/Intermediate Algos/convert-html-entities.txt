@@ -1,0 +1,45 @@
+INSTRUCTIONS:
+Convert HTML Entities
+Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
+------------------------
+// used an htmlObj and regex replace methods for the quote and apostrophe
+
+
+function convertHTML(str) {
+  // bit of a hack, use regex for finding apostrophe
+
+  
+  let newStr = ""
+  for (let i = 0; i < str.length; i ++){
+    switch(str[i]){
+      case '&':
+        newStr += htmlObj['&'];
+        break;
+      case '<':
+        newStr += htmlObj['<'];
+        break;
+      case '>':
+        newStr += htmlObj['>'];
+        break;
+      default:
+        newStr += str[i];
+    }
+  }
+
+  let myRegQuote = /"/g;
+  newStr = newStr.replace(myRegQuote, "&quot;");
+  let myRegApos = /'/g;
+  newStr = newStr.replace(myRegApos, "&apos;");
+  console.log(newStr);
+  return newStr;
+}
+
+
+//HTML obj
+let htmlObj = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': 	'&gt;',
+   
+}
+convertHTML("Dolce & Gabbana");

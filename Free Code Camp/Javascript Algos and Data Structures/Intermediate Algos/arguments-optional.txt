@@ -1,0 +1,31 @@
+// What got me stuck here is that in javascript
+-> the values defined inside the function remain, unlike in python where all local variables in function scope are deleted once the function return is called
+
+// thus, using var first = first argument
+// then returning an inline function if the second argument does not exist
+// this is very tricky to understand
+
+-> because returning a function in other languages -> eg giving a variable the function -> would not expect to be able to return a function 
+-> like ittem => returnedFunc(storedVar, item)
+
+
+
+function addTogether() {
+  for (let i in arguments){
+    if (typeof(arguments[i]) != "number"){
+      return undefined;
+    }
+  }
+  var first = arguments[0];
+  
+  if (arguments.length == 2){
+    return(arguments[0] + arguments[1]);
+  } else if (arguments[1] == undefined){
+      return item => addTogether(first, item);
+    
+  } else {
+    return addTogether;
+  }
+}
+
+addTogether(2,3);

@@ -1,9 +1,24 @@
+// Comments upon completion
+// again using hacks -> if a regex doesn't match, calling .length on 'string'.match(regex) gives errors
+	// problem in FCC console -> does not show this error, but in jsfiddle it does
+
+// thus, i first tested the regex -> if regex.test(str) == false, then I can set the count == 0;
+
+
 function telephoneCheck(str) {
   // digit counter
   let digitRegex = /\d+/g;
-  let digitCount = str.match(digitRegex)
+  let digitCount = 0;
+  // if digit is 0
+  if (digitRegex.test(str) == false){
+     digitCount = 0;
+  } else {
+     let digitCount = str.match(digitRegex)
                       .join("")
                       .length;
+  }
+  
+          
 
   // Check if 1 at beginning of 11 digit phone number
   if (digitCount === 11){
@@ -22,6 +37,39 @@ function telephoneCheck(str) {
 
   // check format (hard part)
 
+  // bracket checker
+  let bracketForwardReg = /\(/g;
+  let bracketForwardCount = str.match(bracketForwardReg)
+                              .join("")
+                              .length;
+                        
+  let bracketBackReg = /\\/g;
+  let bracketBackCount = str.match(bracketBackReg)
+                              .join("")
+                              .length;
+
+  if (bracketBackCount > 1){
+    return false;
+  } else if (bracketBackCount == 1){ // case where there is exactly 1 opening and closing bracket
+    if (bracketForwardCount == 1){
+      // possible combinations
+      // 1 ---- ^d\s\(d{3}\)
+      // 2 ---- ^d\(d{3}\)
+      let regexBracketChecker = /^\d\s\(\d{3}\)|^\d\(\d{3}\)|^\(\d{3}\)/;
+      if (regexBracketChecker.test(str) == false){
+        return false;
+      }
+    } else { // ie. bracketForwardCount == 0 or > 1 AND closing bracket == 1
+      return false;
+    }
+  } else if (bracketBackCount == 0 && bracketForwardCount != 0){
+      return false;
+  } 
+
+
+  // Now test hyphens
+
+  
 
 
 

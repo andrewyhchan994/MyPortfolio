@@ -1,0 +1,9 @@
+function checkPositive(arr) {
+  // Only change code below this line
+  console.log(arr.every(item => item > 0)); // returns a single boolean
+  return arr.every(item => item > 0); // returns true if all elements in arr are positive
+
+  // Only change code above this line
+}
+
+checkPositive([1, 2, 3, -4, 5]);

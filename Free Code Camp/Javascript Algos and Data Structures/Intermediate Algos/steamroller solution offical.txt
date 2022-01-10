@@ -1,0 +1,86 @@
+function steamrollArray(arr) {
+  // base case eg -> arr = [['a']]
+
+  const newArr = [];
+  for (let i= 0; i < arr.length; i ++){
+      
+    if (Array.isArray(arr[i]) == true){
+      newArr.push(...steamrollArray(arr[i]));
+    } else {
+      
+        newArr.push(arr[i]);
+        
+      
+    }
+  }
+Code Explanation
+Create a new variable to keep flattened arrays.
+Loop over the elements of the array
+If the element is an array then call the function again with to flatten the subarray and push the contents of the flattened subarray into the flattened array.
+If the element is not an array, then push that non-array element to the flattened array.
+Return the flattened array.
+
+  console.log(newArr);
+  return newArr;
+  
+}
+steamrollArray([1, [2], [3, [[4]]]]);
+
+-------------------------------------------------
+Sol 2
+
+function steamrollArray(arr) {
+  const flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
+Code Explanation
+Use spread operator to concatenate each element of arr with an empty array
+Use Array.some() method to find out if the new array contains an array still
+If it does, use recursion to call steamrollArray again, passing in the new array to repeat the process on the arrays that were deeply nested
+If it does not, return the flattened array
+
+-------------------------------------------------
+Sol 3: STRING METHOD
+NOTE: WHEN THERE IS AN OBJECT, THEY CONVERT TO CURLY BRACES
+function steamrollArray(arr) {
+  return arr
+    .toString()
+    .replace(",,", ",") // "1,2,,3" => "1,2,3"
+    .split(",") // ['1','2','3']
+    .map(function(v) {
+      if (v == "[object Object]") {
+        // bring back empty objects
+        return {};
+      } else if (isNaN(v)) {
+        // if not a number (string)
+        return v;
+      } else {
+        return parseInt(v); // if a number in a string, convert it
+      }
+    });
+}
+
+-------------------------------------------------
+SOL 4:
+function steamrollArray(val,flatArr=[]) {
+  val.forEach(item => {
+    if (Array.isArray(item)) steamrollArray(item, flatArr);
+    else flatArr.push(item);
+  });
+  return flatArr;
+}
+
+-------------------------------------------------
+SOL 5:
+USES TERNARY OPERATOR
+
+function steamrollArray(arr, flatArr = []) {
+  const elem = arr.pop();
+  return elem
+    ? !Array.isArray(elem)
+      ? steamrollArray(arr, [elem, ...flatArr])
+      : steamrollArray(arr.concat(elem), flatArr)
+    : flatArr;
+}

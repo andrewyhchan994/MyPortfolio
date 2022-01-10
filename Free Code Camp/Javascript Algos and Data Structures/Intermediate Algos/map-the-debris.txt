@@ -1,0 +1,49 @@
+NOTE:
+had to be careful with extracting the object properties
+
+also the final answer needs to be rounded 
+
+A mistake was made where altitude was divided by 1000.
+
+INSTRUCTIONS:
+Map the Debris
+Return a new array that transforms the elements' average altitude into their orbital periods (in seconds).
+
+The array will contain objects in the format {name: 'name', avgAlt: avgAlt}.
+
+You can read about orbital periods on Wikipedia.
+
+The values should be rounded to the nearest whole number. The body being orbited is Earth.
+
+The radius of the earth is 6367.4447 kilometers, and the GM value of earth is 398600.4418 km3s-2.
+
+
+---------------------------------------
+
+function orbitalPeriod(arr) {
+  const gm = 398600.4418;
+  const earthRadius = 6367.4447;
+
+  const nameList = arr.map(({"name":name}) => ({name}));
+
+  const finalAns = arr.map(({"avgAlt":avgAlt}) => ({avgAlt}));
+
+  const result = [...nameList];
+  let km = 0;
+  let a = 0;
+
+  for (let i in finalAns){
+    //console.log(finalAns[i]["avgAlt"]);
+    km = finalAns[i]["avgAlt"]; 
+    console.log("KM   " + km);
+    a = (km + earthRadius)**3;
+    console.log(a);
+    result[i]["orbitalPeriod"] = Math.round(2.0*Math.PI*(a / gm)**(0.5));
+
+  }
+  console.log(result);
+  //console.log(2.0*Math.PI*(a / gm)**(0.5));
+  return result;
+}
+
+orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);

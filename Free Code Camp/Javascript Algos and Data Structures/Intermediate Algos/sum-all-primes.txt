@@ -1,0 +1,29 @@
+function sumPrimes(num) {
+  let mymultiples = [1];
+  let myprimes = [];
+
+  
+  for (let i = 2; i <= num; i ++){
+    if (!mymultiples.includes(i)){
+      mymultiples.push(i);
+      myprimes.push(i);
+    }
+    for (let j = i**2; j <= num + 1; j = j + i){
+      if (!mymultiples.includes(j)){
+        mymultiples.push(j);
+      }
+    }
+  }
+  console.log(myprimes);
+  let sum = 0;
+  for (let i in myprimes){
+    sum += myprimes[i];
+    
+  }
+  console.log(sum);
+  return sum;
+  
+
+}
+
+sumPrimes(10);

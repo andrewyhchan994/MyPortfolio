@@ -4,7 +4,6 @@ function checkCashRegister(price, cash, cid) {
     total += cid[i][1];
   }
   total = total.toFixed(2);
-  console.log(total);
 
   let regisObj = {//set up regisObj here for easier access
     status: "",
@@ -12,7 +11,8 @@ function checkCashRegister(price, cash, cid) {
   }
   //change  
   let change = cash - price; //customer's cash - price
-  
+  let changeArr = []; // change array in coins and bills sorted in highest to lowest order
+
   if (change > total){
     regisObj.status = "INSUFFICIENT_FUNDS";
     return regisObj;
@@ -21,25 +21,37 @@ function checkCashRegister(price, cash, cid) {
     regisObj.change = cid;
     return regisObj;
   } else if (change < total){
+    
     // two cases
     // Case 1: cannot return exact change
-    let subtotal = 0;
+    let subtotalChange = 0;
+    let cashMultiplierArr = [.01, .05, .10, .25, 1, 5, 10, 20, 100]
+    let cashLabelArr = ["PENNY", "NICKEL", "DIME", "QUARTER", "DOLLAR", "FIVE", "TEN", "TWENTY", "HUNDRED"];
+    let multiplierW = 1;
     for (let i = cid.length - 1; i >= 0; i--){
-      if (change >= cid[i]){
-        subtotal+= cid; // incorrect
+      if (change >= cashMultiplierArr[i] && cid[i][1] != 0){
+        while(cashMultiplierArr[i]*multiplierW <= cid[i][1]){
+          subtotalChange += cashMultiplierArr[i]; 
+          
+          multiplierW ++;
+        }
+        changeArr.push([cashLabelArr[i], cashMultiplierArr[i]*multiplierW]);
+        multiplierW = 1;
       }
     }
-    if (subtotal != change){
+    if (subtotalChange != change){
       regisObj.status = "INSUFFICIENT_FUNDS";
+      regisObj.change = [];
+      return regisObj;
+    } else if (subtotalChange == change){
+      regisObj.status = "OPEN";
+      regisObj.change = changeArr;
+      console.log(changeArr);
       return regisObj;
     }
-    //Not DRY but separating into two cases and can refactor at a later time
-    // Case 2: can return exact change
+
+  }
     
-
-
-
-
 
   }
 
@@ -51,12 +63,5 @@ function checkCashRegister(price, cash, cid) {
 
 
 
-
-
-
-
-
-  return change;
-}
 
 checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
