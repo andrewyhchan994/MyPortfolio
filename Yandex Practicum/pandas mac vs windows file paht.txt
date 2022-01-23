@@ -1,0 +1,5 @@
+pd.read_csv filepath
+
+/datasets/music_log.csv   -> macos or linux
+
+windows backslash \\ used instead

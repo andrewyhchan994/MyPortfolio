@@ -1,0 +1,1 @@
+when we enumerate several variables after return -> function packs them into a single structure, called a tuple

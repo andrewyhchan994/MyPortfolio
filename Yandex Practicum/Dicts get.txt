@@ -1,0 +1,7 @@
+get() better than try-except for finding keys
+
+
+walmart_price = financial_info["Walmart"]
+#walmart_price = financial_info.get("Walmart", 1)
+
+none-is default value of get() so you should not specify None.

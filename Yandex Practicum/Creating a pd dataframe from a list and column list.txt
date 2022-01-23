@@ -1,0 +1,9 @@
+two lists: one of the values, and one of the column names
+music , entries
+
+-> next created a pandas dataframe using the parameters data, columns, with music, entries as the arguments
+
+Recall: parameters -> the variables, 
+-> arguments = values 
+
+playlist = pd.DataFrame(data=music, columns = entries)

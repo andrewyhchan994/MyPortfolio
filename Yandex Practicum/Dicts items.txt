@@ -1,0 +1,10 @@
+for loop through dictionary goes through keys
+
+use mydict.items()
+
+and for key, item in mydict.items()
+
+Example:
+for person, points in game_scores.items(): # person -> key, points -> value
+    total_points = sum(points) # the sum() function will return the sum of the points list
+    print(f'{person} - {total_points}') # print the total points for each person

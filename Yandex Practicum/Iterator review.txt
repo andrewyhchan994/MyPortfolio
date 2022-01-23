@@ -1,0 +1,6 @@
+Some terms that I made mistakes on:
+
+iterator -> inside the for loop header
+	-> variable which keeps the current iteration's number is called the iterator
+
+counter -> that which is used to store the calculation result??

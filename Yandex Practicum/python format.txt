@@ -1,0 +1,12 @@
+Having parameters on seperate lines makes it easier to read
+
+def multiplication(
+    first_number,
+    second_number,
+    message="Multiplication result: ",
+    show_message=True,
+):
+
+function name should be in snake_case
+
+named arguments always follow positional arguments
