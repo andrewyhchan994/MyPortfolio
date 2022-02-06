@@ -1,0 +1,9 @@
+
+##Replace the 'source' value of 'undef' with 'other' in the logs DataFrame.
+
+
+#####
+logs['email'] = logs['email'].fillna(value='')
+logs.loc[logs['source'] == '', 'source'] = 'email'
+
+logs.loc[logs['source'] == 'undef', 'source'] = 'other' # <replace 'undef' with 'other' in the 'source' column here>

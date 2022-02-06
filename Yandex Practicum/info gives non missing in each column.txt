@@ -1,0 +1,1 @@
+The info() method prints the number of values that are not missing in each column (null values are missing values, while non-null values are non-missing values)

@@ -1,0 +1,1 @@
+groupby() doesn't include a group for NaN values, it just passes over them

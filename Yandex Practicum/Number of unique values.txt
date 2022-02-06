@@ -1,0 +1,7 @@
+#nunique()
+
+import pandas as pd
+
+logs = pd.read_csv('/datasets/logs_us.csv')
+print(f"Unique email addresses: {logs.email.nunique()}")
+print(f"Unique user IDs: {len(logs.user_id.unique())}")
