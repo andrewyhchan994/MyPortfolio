@@ -1,0 +1,11 @@
+import pandas as pd
+
+stock = pd.read_csv('/datasets/stock_upd_eng.csv')
+stock['item_lowercase'] = stock['item'].str.lower()
+apple = stock[stock['item_lowercase'] == 'apple iphone xr 64gb']['count'].sum()
+samsung = stock[stock['item_lowercase'] == 'samsung galaxy a30 32gb']['count'].sum()
+stock = stock.drop_duplicates(subset='item_lowercase').reset_index(drop=True)
+
+stock.loc[stock['item_lowercase'] == 'apple iphone xr 64gb', 'count']= apple
+stock.loc[stock['item_lowercase'] == 'samsung galaxy a30 32gb', 'count'] = samsung
+print(stock.head())
