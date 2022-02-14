@@ -1,0 +1,3 @@
+data = data.loc[data['subcategory_id'] != 'total']
+
+use .loc[condition opposite of ==]
