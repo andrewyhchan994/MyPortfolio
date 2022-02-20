@@ -1,0 +1,20 @@
+.apply(func_name, axis=1) ---> apply to columns
+
+df['col1'].apply(func_name, axis=1) ----> apply to specific column
+
+
+
+
+------------------------------------------
+df with birthdate column
+
+def calc_age(birthdate):
+    age = today.year - birthdate.year
+    if age < 0:
+        return float('nan')
+    else:
+        return age
+
+
+# Apply function
+test_data['age'] = test_data['birthdate'].apply(calc_age)

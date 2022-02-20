@@ -7,3 +7,12 @@ df = df.rename(columns={
 })
 
 print(df.columns)
+
+
+
+
+
+
+
+
+support.rename(columns = {'request_type':'type_message', 'request_timestamp':"timestamp"}, inplace=True)

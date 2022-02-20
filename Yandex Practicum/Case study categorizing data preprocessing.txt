@@ -1,0 +1,18 @@
+Instructions:
+Now the moment you and your bosses have been waiting for. Let's use the age groups we've created and the statuses we've assigned to examine the current state of dengue fever in our community.
+Use a pivot table to look at status counts (columns) by age group (rows). Include the margins=True argument to include row/column totals.
+Note: since we are looking at counts, use the values='age' input argument to simplify our table. (Run your code without this argument first to see what difference it makes.)
+We've saved the final dataset in the file final_dengue_testing_data.xlsx.
+
+-----------------------------------------------------------------------------------------
+   birthdate exposed_date test_results  age age_group  days_since_exposed       status
+0 1992-01-08   2019-12-24          Neg   28     20-29                   8  Susceptible
+1 1972-01-13   2019-12-15          Neg   48     40-49                  17  Susceptible
+2 1981-01-10   2019-12-21          Neg   39     30-39                  11  Susceptible
+-------------------------------------------------------------------------
+import pandas as pd
+
+test_data = pd.read_excel('final_dengue_testing_data.xlsx')
+
+pivot_table = pd.pivot_table(test_data, index='age_group', columns='status', values='age', aggfunc='count', margins=True)
+# Write pivot table

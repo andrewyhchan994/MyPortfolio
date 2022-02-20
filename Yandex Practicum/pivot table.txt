@@ -1,0 +1,21 @@
+INSTRUCTIONS:
+Recreate the pivot table for the data_final dataset.
+Use a MultiIndex, with both category names and subcategory names.
+The table should be wide-view, with separate columns showing visits for each source.
+
+pivot_table, default agg_func is mean
+-----------------------------------------------------------------
+import pandas as pd
+
+data_final = pd.read_csv('/datasets/data_final_eng.csv')
+
+data_pivot = data_final.pivot_table(index=['category_name', 'subcategory_name'], columns='source', values='visits', aggfunc='sum')
+print(data_pivot.head(10))
+
+
+-------------------------------------------------------------------------------------------------
+source                            	 	direct  		organic
+category_name subcategory_name                    
+Automotive    	Baffle-plates           	 186      		227
+              		Boosters               	1169    		2644
+              		Brake gear             	 521     		1060

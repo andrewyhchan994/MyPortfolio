@@ -1,0 +1,3 @@
+A table stored in ‘long’ form has a single column for each variable in the system.
+
+A table stored in ‘wide’ form spreads a variable across several columns. 
