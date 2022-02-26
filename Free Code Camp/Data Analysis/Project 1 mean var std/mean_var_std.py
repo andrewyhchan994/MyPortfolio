@@ -2,9 +2,9 @@ import numpy as np
 
 
 def calculate(list):
-    # if len(list) != 9:
-    #   return "Throw exception"
-    #First convert list to np.array 
+    if len(list) != 9:
+      raise ValueError('List must contain nine numbers.')
+    # First convert list to np.array 
     npArr = np.array(list)
 
     meanRows = [npArr[[0,1,2]].mean(), npArr[[3,4,5]].mean(), npArr[[6,7,8]].mean()]
@@ -38,7 +38,7 @@ def calculate(list):
     resDict = {
       'mean': [meanCols, meanRows, npArr.mean()],
       'variance':[varCols, varRows, np.var(npArr)],
-      'standard deviation': [stdRows, stdCols, np.std(npArr)],
+      'standard deviation': [stdCols, stdRows, np.std(npArr)],
       'max': npmax,
       'min': npmin,
       'sum': [sumCols, sumRows, npArr.sum()]
