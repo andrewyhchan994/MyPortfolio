@@ -1,0 +1,38 @@
+target = "price_aprox_usd"
+features = ["neighborhood"]
+y_train = df[target]
+X_train = df[features]
+
+
+------------------------------
+Output:
+2       215000.00
+9       341550.00
+12       91156.62
+13      105000.00
+17       89681.00
+          ...    
+8589     73536.95
+8590    119000.00
+8593     62000.00
+8601    125000.00
+8604     78000.00
+Name: price_aprox_usd, Length: 6582, dtype: float64
+
+
+pandas dataframe
+neighborhood
+2	Recoleta
+9	Recoleta
+12	Monserrat
+13	Belgrano
+17	Villa del Parque
+...	...
+8589	Barracas
+8590	Almagro
+8593	Barracas
+8601	San Nicolás
+8604	Boedo
+
+
+
