@@ -13,13 +13,14 @@ def calculate(list):
     #varRows = [np.var(npArr[0,1,2])]
 
     sumRows = [npArr[[0,1,2]].sum(), npArr[[3,4,5]].sum(), npArr[[6,7,8]].sum()]
-    varRows = [np.var(sumRows), np.var(sumRows), np.var(sumRows)]
-    stdRows = [np.std(sumRows, dtype=np.float64), np.std(sumRows, dtype=np.float64), np.std(sumRows, dtype=np.float64)]
+    
+    varRows = [np.var(npArr[[0,1,2]]), np.var(npArr[[3,4,5]]),np.var(npArr[[6,7,8]])]
+    stdRows = [np.std(npArr[[0,1,2]], dtype=np.float64), np.std(npArr[[3,4,5]], dtype=np.float64), np.std(npArr[[6,7,8]], dtype=np.float64)]
 
 
     sumCols = [npArr[[0,3,6]].sum(), npArr[[1,4,7]].sum(), npArr[[2,5,8]].sum()]
-    varCols = [np.var(sumCols), np.var(sumCols), np.var(sumCols)]
-    stdCols = [np.std(sumCols, dtype=np.float64), np.std(sumCols, dtype=np.float64), np.std(sumCols, dtype=np.float64)]
+    varCols = [np.var(npArr[[0,3,6]]), np.var(npArr[[1,4,7]]),np.var(npArr[[2,5,8]])]
+    stdCols = [np.std(npArr[[0,3,6]], dtype=np.float64), np.std(npArr[[1,4,7]], dtype=np.float64), np.std(npArr[[2,5,8]], dtype=np.float64)]
 
     #3 by 3 Matrix 
     npArr3x3 = np.reshape(npArr, (3, 3))
@@ -30,9 +31,6 @@ def calculate(list):
 
     print(npmin)
     print(npmax)
-
-
-
 
 
 
